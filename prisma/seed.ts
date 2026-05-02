@@ -5,7 +5,6 @@
  * Frankfurt| ../seeding/frankfurt_am_main_stadtteile.json | features.properties.STTLNAME          | features.properties.geometry
  * München  | ../seeding/muenchen_stadtbezirke.json        | features.properties.sb_name           | features.properties.geometry
  */
-import 'dotenv/config'
 import {PrismaClient} from './generated/prisma/client'
 import * as fs from 'fs'
 import {PrismaPg} from "@prisma/adapter-pg"
