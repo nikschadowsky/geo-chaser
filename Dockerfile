@@ -20,6 +20,10 @@ WORKDIR /app
 # Nur die gebauten Dateien und die nötigsten Server-Dateien kopieren
 COPY --from=builder /src/.output ./.output
 
+COPY --from=builder /src/prisma ./prisma
+COPY --from=builder /src/package*.json ./
+COPY --from=builder /src/seeding ./seeding
+
 # Standardmäßig nutzt Nuxt Port 3000
 ENV PORT=3000
 EXPOSE 3000
