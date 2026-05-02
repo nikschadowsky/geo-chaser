@@ -1,6 +1,8 @@
 # Stage 1: Build
 FROM node:20-slim AS builder
 
+ENV DATABASE_URL="postgresql://dummy:dummy@localhost:5432/dummy"
+
 WORKDIR /src
 COPY package*.json ./
 RUN npm install
