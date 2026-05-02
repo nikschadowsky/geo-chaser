@@ -24,6 +24,8 @@ COPY --from=builder /src/prisma ./prisma
 COPY --from=builder /src/package*.json ./
 COPY --from=builder /src/seeding ./seeding
 
+COPY --from=builder /src/node_modules ./node_modules
+
 # Standardmäßig nutzt Nuxt Port 3000
 ENV PORT=3000
 EXPOSE 3000
