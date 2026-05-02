@@ -2,6 +2,7 @@
 FROM node:20-slim AS builder
 
 ENV DATABASE_URL="postgresql://dummy:dummy@localhost:5432/dummy"
+ENV NODE_OPTIONS="--max-old-space-size=4096"
 
 WORKDIR /src
 COPY package*.json ./
