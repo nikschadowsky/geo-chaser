@@ -1,0 +1,37 @@
+services:
+  db:
+    image: postgis/postgis:15-3.3
+    container_name: geochaser_db
+    restart: always
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: geochaser
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgis_data:/var/lib/postgresql/data
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d geochaser" ]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  geochaser-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: geochaser_web
+    restart: always
+    ports:
+      - "3001:3000"
+    environment:
+      DATABASE_URL: postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db:5432/geo_chaser?schema=public
+      JWT_SECRET: ${JWT_SECRET}
+      NODE_ENV: production
+    depends_on:
+      db:
+        condition: service_healthy
+
+volumes:
+  postgis_data:
