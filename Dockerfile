@@ -26,6 +26,8 @@ COPY --from=builder /src/seeding ./seeding
 
 COPY --from=builder /src/node_modules ./node_modules
 
+COPY --from=builder /src/prisma.config.ts ./
+
 # Standardmäßig nutzt Nuxt Port 3000
 ENV PORT=3000
 EXPOSE 3000
