@@ -68,6 +68,6 @@ export default defineNuxtConfig({
         strategy: 'no_prefix',
     },
     build: {
-        transpile: ['vue']
+        transpile: ['vue', 'entities']
     }
 })
