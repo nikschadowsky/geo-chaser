@@ -32,7 +32,8 @@ export default defineEventHandler(async (event) => {
         secure: process.env.NODE_ENV === 'production',
         sameSite: 'lax',
         maxAge: 60 * 60 * 24 * 28,
-        path: '/'
+        path: '/',
+        domain: process.env.DOMAIN
     })
 
     return {
