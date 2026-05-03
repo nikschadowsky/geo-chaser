@@ -11,7 +11,7 @@ export default defineEventHandler(async (event) => {
     } catch (error) {
         throw createError({
             statusCode: 500,
-            statusMessage: 'Fehler beim Laden der Regionen',
+            message: 'CANNOT_LOAD_DATA',
         })
     }
 })

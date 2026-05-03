@@ -6,7 +6,7 @@ export default defineEventHandler(async (event) => {
     if (!regionNameParam) {
         throw createError({
             statusCode: 400,
-            statusMessage: 'No region name provided',
+            message: 'INVALID_REQUEST',
         });
     }
 
@@ -24,7 +24,7 @@ export default defineEventHandler(async (event) => {
     if (!districts.length) {
         throw createError({
             statusCode: 404,
-            statusMessage: 'Region not found',
+            message: 'REGION_NOT_FOUND',
         });
     }
 

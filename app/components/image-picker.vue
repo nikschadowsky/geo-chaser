@@ -2,6 +2,10 @@
 import {ref} from 'vue'
 import exifr from 'exifr'
 
+const props = defineProps<{
+  region: string
+}>()
+
 const isProcessing = ref(false)
 const fileInput = ref<HTMLInputElement | null>(null)
 
@@ -23,14 +27,14 @@ const onFileSelected = async (event: Event) => {
     const coordinates = await exifr.gps(file!)
 
     if (!coordinates || !coordinates.latitude || !coordinates.longitude) {
-      errorDialogMessage.value = 'Dieses Foto enthält keine GPS-Daten. Bitte aktiviere den Standort in deiner Kamera-App.';
+      errorDialogMessage.value = $t('error.NO_GEODATA_IN_IMAGE');
       errorDialogOpen.value = true;
       return
     }
 
     const {latitude, longitude} = coordinates
 
-    const result = await $fetch(`/api/visits/hamburg`, {
+    const result = await $fetch(`/api/visits/${props.region}`, {
       method: 'POST',
       body: {
         lat: latitude,
@@ -38,10 +42,9 @@ const onFileSelected = async (event: Event) => {
       }
     })
     emit('visit-verified', result);
-
-  } catch (err) {
-    console.log(err)
-    errorDialogMessage.value = 'Fehler beim Verarbeiten des Bildes.';
+  } catch (err: any) {
+    console.error(err);
+    errorDialogMessage.value = $t(`error.${err.data?.message}`);
     errorDialogOpen.value = true;
   } finally {
     isProcessing.value = false;

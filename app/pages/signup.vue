@@ -4,7 +4,6 @@ import {z} from 'zod';
 import {zodResolver} from '@primevue/forms/resolvers/zod';
 
 import LanguageSelect from "~/components/language-select.vue";
-import {reroute} from "vue-router/experimental";
 
 const initialValues = reactive({username: '', password: '', passwordConfirmation: ''});
 const globalError = ref('');
@@ -43,7 +42,7 @@ const handleSignup = async ({valid, values}: { valid: boolean, values: any }) =>
     await navigateTo('/maps');
 
   } catch (error: any) {
-    globalError.value = error.data?.message
+    globalError.value = error.data.message
         ? $t(`error.${error.data.message}`)
         : $t('error.SIGNUP_FAILED');
   }

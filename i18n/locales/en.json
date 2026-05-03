@@ -32,9 +32,15 @@
     "LOGIN_FAILED": "Login failed.",
     "SIGNUP_FAILED": "Signup failed.",
     "INVALID_REQUEST": "Invalid request.",
+    "UNAUTHORIZED": "Unauthorized.",
     "INVALID_CREDENTIALS": "Invalid credentials.",
     "USERNAME_ALREADY_EXISTS": "Username already exists.",
-    "CANNOT_LOAD_DATA": "Data could not be loaded."
+    "CANNOT_LOAD_DATA": "Data could not be loaded.",
+    "NO_GEODATA_IN_IMAGE": "No geo data found in image. Please use your phone's camera to take a picture.",
+    "NOT_IN_REGION": "Your are not in the selected region.",
+    "IMAGE_PROCESSING_FAILED": "Image processing failed.",
+    "CANNOT_SAVE_VISIT": "Could not save your visit.",
+    "REGION_NOT_FOUND": "Region not found."
   },
   "validation": {
     "USERNAME_REQUIRED": "Username is required.",

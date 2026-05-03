@@ -8,7 +8,7 @@ export default defineEventHandler(async (event) => {
     const {lat, lng} = body;
 
     if (!authPayload) {
-        throw createError({statusCode: 401, statusMessage: 'Unauthorized'});
+        throw createError({statusCode: 401, message: 'UNAUTHORIZED'});
     }
 
     let foundDistricts: any[] = [];
@@ -24,13 +24,13 @@ export default defineEventHandler(async (event) => {
               AND LOWER(r.name) = LOWER(${regionName}) LIMIT 1;
         `
     } catch (error) {
-        throw createError({statusCode: 500, statusMessage: 'Internal Database Error'});
+        throw createError({statusCode: 500, message: 'CANNOT_LOAD_DATA'});
     }
 
     if (foundDistricts.length === 0) {
         throw createError({
             statusCode: 400,
-            statusMessage: 'Position matches no district in this region.'
+            message: 'NOT_IN_REGION'
         });
     }
 
@@ -69,6 +69,6 @@ export default defineEventHandler(async (event) => {
             message: `Congratulations! You just discovered ${district.name}.`
         };
     } catch (error) {
-        throw createError({statusCode: 500, statusMessage: 'Could not save your visit'});
+        throw createError({statusCode: 500, message: 'CANNOT_SAVE_VISIT'});
     }
 });

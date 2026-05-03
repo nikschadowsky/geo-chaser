@@ -33,7 +33,7 @@ const loadDataAndRender = async () => {
   hasError.value = false
 
   try {
-    const [mapRes, visitsRes] = await Promise.all([
+    const [mapRes, visitsRes]: [any, any] = await Promise.all([
       $fetch(`/api/maps/${regionName.value}`),
       $fetch(`/api/visits/${regionName.value}`)
     ])
@@ -63,7 +63,7 @@ const loadDataAndRender = async () => {
 
     renderLeaflet()
   } catch (err) {
-    console.error("Daten-Ladefehler:", err)
+    console.error(err)
     hasError.value = true
   } finally {
     isLoading.value = false
@@ -92,22 +92,24 @@ const renderLeaflet = () => {
     }),
     onEachFeature: (feature: any, layer: any) => {
       layer.on('click', (e: any) => {
-        layer.bindTooltip(feature.properties.name, {
-          direction: 'center',
-          sticky: false,
-          className: 'district-tooltip',
-          interactive: false
-        }).openTooltip(e.latlng)
+        if (feature) {
+          layer.bindTooltip(feature.properties.name, {
+            direction: 'center',
+            sticky: false,
+            className: 'district-tooltip',
+            interactive: false
+          }).openTooltip(e.latlng)
 
-        if (selectedLayer) {
-          selectedLayer.setStyle({color: '#ffffff', weight: 1.5, fillOpacity: 0.8})
+          if (selectedLayer) {
+            selectedLayer.setStyle({color: '#ffffff', weight: 1.5, fillOpacity: 0.8})
+          }
+
+          layer.setStyle({color: primaryColor, weight: 3, fillOpacity: 0.9})
+          layer.bringToFront()
+          selectedLayer = layer
+
+          L.DomEvent.stopPropagation(e)
         }
-
-        layer.setStyle({color: primaryColor, weight: 3, fillOpacity: 0.9})
-        layer.bringToFront()
-        selectedLayer = layer
-
-        L.DomEvent.stopPropagation(e)
       })
     }
   }).addTo(mapInstance)
@@ -126,10 +128,15 @@ const handleNewVisit = (newVisit: any) => {
     unlockDialogAlreadyVisited.value = false
     renderLeaflet()
   } else if (newVisit.alreadyVisited) {
+    const district = allDistricts.value.find(d => d.id === newVisit.districtId)
+
+    console.log(district);
+
     unlockDialogOpen.value = true
     unlockDialogTitle.value = $t('already-unlocked-district-title')
-    unlockDialogMessage.value = $t('already-unlocked-district-desc', {district: visit.district.name})
+    unlockDialogMessage.value = $t('already-unlocked-district-desc', {district: district.name})
     unlockDialogAlreadyVisited.value = true
+    console.log("already visited")
   }
 }
 
@@ -211,7 +218,7 @@ onMounted(async () => {
           size="large"
           raised
       />
-      <ImagePicker v-if="!detailsVisible" @visit-verified="handleNewVisit"/>
+      <ImagePicker v-if="!detailsVisible" :region="regionName" @visit-verified="handleNewVisit"/>
     </div>
 
     <Dialog v-model:visible="detailsVisible" modal :header="regionNameDisplay">
@@ -270,7 +277,7 @@ onMounted(async () => {
     <Dialog v-model:visible="unlockDialogOpen" modal :header="regionNameDisplay">
       <template #header>
         <div class="inline-flex items-center justify-center gap-2">
-          <i class="pi mb-1 text-2xl!"
+          <i class="pi mb-1 text-2xl! text-amber-400"
              :class="{ 'pi-star' : !unlockDialogAlreadyVisited, 'pi-lock-open' : unlockDialogAlreadyVisited }"
           />
           <span class="font-bold whitespace-nowrap">{{ unlockDialogTitle }}</span>

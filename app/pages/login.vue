@@ -30,7 +30,7 @@ const handleLogin = async ({valid, values}: { valid: boolean, values: any }) => 
     });
     await navigateTo('/maps');
   } catch (error: any) {
-    globalError.value = $t(`error.${error.data?.message}`) || $t('error.LOGIN_FAILED');
+    globalError.value = $t(`error.${error.data.message}`) || $t('error.LOGIN_FAILED');
   }
 }
 </script>

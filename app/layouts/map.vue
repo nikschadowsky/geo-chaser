@@ -4,6 +4,7 @@ import LanguageSelect from "~/components/language-select.vue";
 
 const {isMenuOpen} = useMenu()
 const router = useRouter()
+const toast = useToast();
 
 const {data: regions, pending} = await useFetch<any[]>('/api/maps')
 
@@ -16,8 +17,8 @@ const handleLogout = async () => {
     isMenuOpen.value = false
 
     await router.replace('/login')
-  } catch (error) {
-    console.error('Fehler beim Logout:', error)
+  } catch (error: any) {
+    toast.add({severity: 'error', summary: $t(`error.${error.data.message}`), life: 3000});
   }
 }
 </script>
@@ -73,8 +74,8 @@ const handleLogout = async () => {
               @click="handleLogout"
           />
           <div class="flex flex-row justify-evenly mt-4">
-            <NuxtLink to="/imprint">{{ $t('imprint-btn')}}</NuxtLink>
-            <NuxtLink to="/privacy-policy">{{ $t('privacy-policy-btn')}}</NuxtLink>
+            <NuxtLink to="/imprint">{{ $t('imprint-btn') }}</NuxtLink>
+            <NuxtLink to="/privacy-policy">{{ $t('privacy-policy-btn') }}</NuxtLink>
           </div>
         </div>
       </div>
