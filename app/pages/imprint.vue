@@ -30,34 +30,36 @@
             class="text-primary"
             rel="noopener noreferrer"
             target="_blank"
-        >Resource<i class="pi pi-arrow-up-right"/></a></li>
+        >{{ $t('resource-link') }}<i class="pi pi-arrow-up-right"/></a></li>
       <li><span class="text-primary">Frankfurt:</span> Stadt Frankfurt a.M., Bürgeramt Statistik und Wahlen &bullet;
         Datenlizenz Deutschland – Namensnennung – Version 2.0 &bullet; <a
             href="https://hub.arcgis.com/datasets/esri-de-content::stadtteile-frankfurt-am-main/about"
             class="text-primary"
             rel="noopener noreferrer"
             target="_blank"
-        >Resource<i class="pi pi-arrow-up-right"/></a></li>
-      <li><span class="text-primary">Gießen:</span> &copy;OpenStreetMap contributors &bullet; Open Data Commons Open Database License &bullet; <a
-          href="https://overpass-turbo.eu/"
-          class="text-primary"
-          rel="noopener noreferrer"
-          target="_blank"
-      >Resource<i class="pi pi-arrow-up-right"/></a></li>
+        >{{ $t('resource-link') }}<i class="pi pi-arrow-up-right"/></a></li>
+      <li><span class="text-primary">Gießen:</span> &copy;OpenStreetMap contributors &bullet; Open Data Commons Open
+        Database License &bullet; <a
+            href="https://overpass-turbo.eu/"
+            class="text-primary"
+            rel="noopener noreferrer"
+            target="_blank"
+        >{{ $t('resource-link') }}<i class="pi pi-arrow-up-right"/></a></li>
       <li><span class="text-primary">Hamburg:</span> Freie und Hansestadt Hamburg, Landesbetrieb Geoinformation und
         Vermessung (LGV) &bullet; Datenlizenz Deutschland – Namensnennung – Version 2.0 &bullet; <a
             href="https://archiv.transparenz.hamburg.de/hmbtgarchive/HMDK/hh_wfs_verwaltungsgrenzen_215642_snap_29.GML"
             class="text-primary"
             rel="noopener noreferrer"
             target="_blank"
-        >Resource<i class="pi pi-arrow-up-right"/></a>
+        >{{ $t('resource-link') }}<i class="pi pi-arrow-up-right"/></a>
       </li>
-      <li><span class="text-primary">München:</span> GeodatenService München &bullet; Datenlizenz Deutschland – Namensnennung – Version 2.0 &bullet; <a
+      <li><span class="text-primary">München:</span> GeodatenService München &bullet; Datenlizenz Deutschland –
+        Namensnennung – Version 2.0 &bullet; <a
             href="https://opendata.muenchen.de/dataset/vablock_stadtbezirke_opendata/resource/de2af3e6-86b6-43ce-876e-92ec251e22f1"
             class="text-primary"
             rel="noopener noreferrer"
             target="_blank"
-        >Resource<i class="pi pi-arrow-up-right"/></a></li>
+        >{{ $t('resource-link') }}<i class="pi pi-arrow-up-right"/></a></li>
     </ul>
   </div>
 </template>

@@ -30,6 +30,7 @@
   "source": "Source",
   "geo-sources": "Geo Data Sources",
   "geo-sources-desc": "Data sources for the geo data of the districts, municipalities, counties or other areas",
+  "resource-link": "Resource",
   "error": {
     "LOGIN_FAILED": "Login failed.",
     "SIGNUP_FAILED": "Signup failed.",

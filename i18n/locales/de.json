@@ -30,6 +30,7 @@
   "source": "Quelle",
   "geo-sources": "Geodatenquellen",
   "geo-sources-desc": "Datenquellen für die Geodaten der Bezirke, Stadtteile, Ortsteile oder sonstigen Bereichen",
+  "resource-link": "Ressource",
   "error": {
     "LOGIN_FAILED": "Anmeldung fehlgeschlagen.",
     "SIGNUP_FAILED": "Account erstellen fehlgeschlagen.",
