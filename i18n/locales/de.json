@@ -28,6 +28,8 @@
   "email": "E-Mail",
   "privacy-policy-title": "Datenschutzerklärung",
   "source": "Quelle",
+  "geo-sources": "Geodatenquellen",
+  "geo-sources-desc": "Datenquellen für die Geodaten der Bezirke, Stadtteile, Ortsteile oder sonstigen Bereichen",
   "error": {
     "LOGIN_FAILED": "Anmeldung fehlgeschlagen.",
     "SIGNUP_FAILED": "Account erstellen fehlgeschlagen.",

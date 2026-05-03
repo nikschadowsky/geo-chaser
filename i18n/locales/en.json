@@ -28,6 +28,8 @@
   "email": "Email",
   "privacy-policy-title": "Privacy Policy",
   "source": "Source",
+  "geo-sources": "Geo Data Sources",
+  "geo-sources-desc": "Data sources for the geo data of the districts, municipalities, counties or other areas",
   "error": {
     "LOGIN_FAILED": "Login failed.",
     "SIGNUP_FAILED": "Signup failed.",

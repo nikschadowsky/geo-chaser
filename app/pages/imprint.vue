@@ -18,8 +18,47 @@
     <h2 class="text-2xl mt-10">{{ $t('imprint-contact-title') }}</h2>
     <p>{{ $t('telephone') }}: +49 152 05147503</p>
     <p>{{ $t('email') }}: <a href="mailto:info@nikschadowsky.de" class="text-primary">info@nikschadowsky.de</a></p>
-    <p class="mt-8">{{ $t('source') }}: <a href="https://www.e-recht24.de" rel="noopener noreferrer" class="text-primary">e-recht24.de</a>
+    <p class="mt-8">{{ $t('source') }}: <a href="https://www.e-recht24.de" rel="noopener noreferrer"
+                                           class="text-primary">e-recht24.de</a>
     </p>
+    <h2 class="text-2xl mt-10">{{ $t('geo-sources') }}</h2>
+    <p>{{ $t('geo-sources-desc') }}:</p>
+    <ul class="list-disc pl-4">
+      <li><span class="text-primary">Berlin:</span> Geoportal Berlin / Ortsteile von Berlin &bullet; Datenlizenz
+        Deutschland – Zero – Version 2.0 &bullet; <a
+            href="https://tsb-opendata.s3.eu-central-1.amazonaws.com/ortsteile/lor_ortsteile.geojson"
+            class="text-primary"
+            rel="noopener noreferrer"
+            target="_blank"
+        >Resource<i class="pi pi-arrow-up-right"/></a></li>
+      <li><span class="text-primary">Frankfurt:</span> Stadt Frankfurt a.M., Bürgeramt Statistik und Wahlen &bullet;
+        Datenlizenz Deutschland – Namensnennung – Version 2.0 &bullet; <a
+            href="https://hub.arcgis.com/datasets/esri-de-content::stadtteile-frankfurt-am-main/about"
+            class="text-primary"
+            rel="noopener noreferrer"
+            target="_blank"
+        >Resource<i class="pi pi-arrow-up-right"/></a></li>
+      <li><span class="text-primary">Gießen:</span> &copy;OpenStreetMap contributors &bullet; Open Data Commons Open Database License &bullet; <a
+          href="https://overpass-turbo.eu/"
+          class="text-primary"
+          rel="noopener noreferrer"
+          target="_blank"
+      >Resource<i class="pi pi-arrow-up-right"/></a></li>
+      <li><span class="text-primary">Hamburg:</span> Freie und Hansestadt Hamburg, Landesbetrieb Geoinformation und
+        Vermessung (LGV) &bullet; Datenlizenz Deutschland – Namensnennung – Version 2.0 &bullet; <a
+            href="https://archiv.transparenz.hamburg.de/hmbtgarchive/HMDK/hh_wfs_verwaltungsgrenzen_215642_snap_29.GML"
+            class="text-primary"
+            rel="noopener noreferrer"
+            target="_blank"
+        >Resource<i class="pi pi-arrow-up-right"/></a>
+      </li>
+      <li><span class="text-primary">München:</span> GeodatenService München &bullet; Datenlizenz Deutschland – Namensnennung – Version 2.0 &bullet; <a
+            href="https://opendata.muenchen.de/dataset/vablock_stadtbezirke_opendata/resource/de2af3e6-86b6-43ce-876e-92ec251e22f1"
+            class="text-primary"
+            rel="noopener noreferrer"
+            target="_blank"
+        >Resource<i class="pi pi-arrow-up-right"/></a></li>
+    </ul>
   </div>
 </template>
 
