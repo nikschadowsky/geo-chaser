@@ -1,50 +1,49 @@
-/**
- * Stadt    | Dateiname                                    | Pfad Ort-Name                         | Pfad GeoDaten
- * Hamburg  | ../seeding/hamburg_stadtteile.json           | features.properties.stadtteil_name    | features.properties.geometry
- * Berlin   | ../seeding/berlin_ortsteile.json             | features.properties.OTEIL             | features.properties.geometry
- * Frankfurt| ../seeding/frankfurt_am_main_stadtteile.json | features.properties.STTLNAME          | features.properties.geometry
- * München  | ../seeding/muenchen_stadtbezirke.json        | features.properties.sb_name           | features.properties.geometry
- */
-import {PrismaClient} from './generated/prisma/client'
+import { PrismaClient } from './generated/prisma/client'
 import * as fs from 'fs'
-import {PrismaPg} from "@prisma/adapter-pg"
+import { PrismaPg } from "@prisma/adapter-pg"
 import * as pg from 'pg'
 import * as path from 'path'
 
-const {Pool} = pg
-const pool = new Pool({connectionString: process.env.DATABASE_URL})
+// Typ-Definition für unsere externe Config
+interface CityConfig {
+    name: string;
+    file: string;
+    srid: number;
+    nameProperties: string[];
+}
+
+const { Pool } = pg
+const pool = new Pool({ connectionString: process.env.DATABASE_URL })
 const adapter = new PrismaPg(pool)
-const prisma = new PrismaClient({adapter})
-const cityConfigs = [
-    {
-        name: 'Hamburg',
-        file: './seeding/hamburg_stadtteile.json',
-        srid: 4326, // Standard WGS84
-        namePath: (f: any) => f.properties.stadtteil_name || f.properties.name
-    },
-    {
-        name: 'Berlin',
-        file: './seeding/berlin_ortsteile.json',
-        srid: 4326,
-        namePath: (f: any) => f.properties.OTEIL
-    },
-    {
-        name: 'Frankfurt',
-        file: './seeding/frankfurt_am_main_stadtteile.json',
-        srid: 4326,
-        namePath: (f: any) => f.properties.STTLNAME
-    },
-    {
-        name: 'München',
-        file: './seeding/muenchen_stadtbezirke.json',
-        srid: 25832, // UTM Zone 32N
-        namePath: (f: any) => f.properties.sb_name
+const prisma = new PrismaClient({ adapter })
+
+// Hilfsfunktion: Sucht den richtigen Namen anhand der konfigurierten Keys
+function getDistrictName(feature: any, properties: string[]): string | undefined {
+    if (!feature.properties) return undefined;
+
+    for (const prop of properties) {
+        if (feature.properties[prop]) {
+            return feature.properties[prop];
+        }
     }
-]
+    return undefined;
+}
 
 async function main() {
     console.log('🏁 Start Geo-Seeding with coordinate transformation...')
 
+    // 1. Config-Datei einlesen
+    const configPath = path.join(process.cwd(), './seeding/seeding.config.json');
+    if (!fs.existsSync(configPath)) {
+        console.error(`❌ Konfigurationsdatei nicht gefunden: ${configPath}`);
+        console.error('Bitte erstelle eine "seed-config.json" im Hauptverzeichnis.');
+        process.exit(1);
+    }
+
+    const rawConfig = fs.readFileSync(configPath, 'utf-8');
+    const cityConfigs: CityConfig[] = JSON.parse(rawConfig);
+
+    // 2. Durch die konfigurieren Städte iterieren
     for (const config of cityConfigs) {
         const filePath = path.join(process.cwd(), config.file)
 
@@ -63,7 +62,21 @@ async function main() {
         console.log(`📍 Import ${config.name} (Source SRID: ${config.srid})...`)
 
         for (const feature of geojson.features) {
-            const districtName = config.namePath(feature)
+            // Geometrie-Typ prüfen, um MultiPoint-Fehler zu vermeiden
+            const type = feature.geometry?.type;
+            if (type !== 'Polygon' && type !== 'MultiPolygon') {
+                console.warn(`  ⏩ Überspringe Feature in ${config.name} (Typ ist ${type})`);
+                continue;
+            }
+
+            // Stadtteilnamen über die Hilfsfunktion extrahieren
+            const districtName = getDistrictName(feature, config.nameProperties);
+
+            if (!districtName) {
+                console.warn(`  ⚠️ Kein Name gefunden in ${config.name}. Verfügbare Properties:`, feature.properties);
+                continue;
+            }
+
             const geometryJson = JSON.stringify(feature.geometry)
 
             try {

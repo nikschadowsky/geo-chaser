@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Hamburg",
+    "file": "./seeding/hamburg_stadtteile.json",
+    "srid": 4326,
+    "nameProperties": ["stadtteil_name", "name"]
+  },
+  {
+    "name": "Berlin",
+    "file": "./seeding/berlin_ortsteile.json",
+    "srid": 4326,
+    "nameProperties": ["OTEIL"]
+  },
+  {
+    "name": "Frankfurt",
+    "file": "./seeding/frankfurt_am_main_stadtteile.json",
+    "srid": 4326,
+    "nameProperties": ["STTLNAME"]
+  },
+  {
+    "name": "München",
+    "file": "./seeding/muenchen_stadtbezirke.json",
+    "srid": 25832,
+    "nameProperties": ["sb_name"]
+  },
+  {
+    "name": "Gießen",
+    "file": "./seeding/giessen_stadtteile.json",
+    "srid": 4326,
+    "nameProperties": ["name"]
+  }
+]
