@@ -69,5 +69,31 @@ export default defineNuxtConfig({
     },
     build: {
         transpile: ['vue', 'entities', 'estree']
+    },
+    app: {
+        head: {
+            charset: 'utf-8',
+            viewport: 'width=device-width, initial-scale=1',
+            title: 'GeoChaser',
+            meta: [
+                {
+                    name: 'description',
+                    content: 'Collect Regions and visit their Districts - everywhere, everytime. You just need a phone to take a picture!'
+                },
+
+                {property: 'og:title', content: 'GeoChaser'},
+                {
+                    property: 'og:description',
+                    content: 'Collect Regions and visit their Districts - everywhere, everytime. You just need a phone to take a picture!'
+                },
+                {property: 'og:type', content: 'website'},
+            ],
+            link: [
+                {rel: 'icon', type: 'image/x-icon', href: '/favicon.ico'},
+            ],
+            style: [],
+            script: [],
+            noscript: []
+        }
     }
 })
