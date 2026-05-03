@@ -36,7 +36,7 @@
     "INVALID_CREDENTIALS": "Falsche Anmeldedaten.",
     "USERNAME_ALREADY_EXISTS": "Benutzername ist bereits vergeben.",
     "CANNOT_LOAD_DATA": "Daten konnten nicht geladen werden.",
-    "NO_GEODATA_IN_IMAGE": "Dieses Foto enthält keine Geo-Daten. Bitte nutze die eine Kamera-App.",
+    "NO_GEODATA_IN_IMAGE": "Dieses Foto enthält keine Geo-Daten. Bitte nutze die Kamera-App deines Handys.",
     "NOT_IN_REGION": "Du bist nicht in dieser Region.",
     "IMAGE_PROCESSING_FAILED": "Fehler beim Verarbeiten des Bildes.",
     "CANNOT_SAVE_VISIT": "Konnte deinen Visit nicht speichern.",
