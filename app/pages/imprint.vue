@@ -60,6 +60,16 @@
             rel="noopener noreferrer"
             target="_blank"
         >{{ $t('resource-link') }}<i class="pi pi-arrow-up-right"/></a></li>
+      <li><span class="text-primary">Wien:</span> Stadt Wien &bullet; <a
+          href="https://creativecommons.org/licenses/by/4.0/deed.de" rel="noopener noreferrer" target="_blank">
+        CC BY 4.0
+      </a>
+        &bullet; <a
+            href="https://www.data.gv.at/katalog/datasets/2ee6b8bf-6292-413c-bb8b-bd22dbb2ad4b"
+            class="text-primary"
+            rel="noopener noreferrer"
+            target="_blank"
+        >{{ $t('resource-link') }}<i class="pi pi-arrow-up-right"/></a></li>
     </ul>
   </div>
 </template>

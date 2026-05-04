@@ -28,5 +28,11 @@
     "file": "./seeding/giessen_stadtteile.json",
     "srid": 4326,
     "nameProperties": ["name"]
+  },
+  {
+    "name": "Wien",
+    "file": "./seeding/wien_bezirke.json",
+    "srid": 31256,
+    "nameProperties": ["NAMEK"]
   }
 ]
