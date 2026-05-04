@@ -1,75 +1,54 @@
-# Nuxt Minimal Starter
+🥳 Version 1.0 of GeoChaser is now out at [geochaser.app](https://geochaser.app)!
+--- 
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+# 📍 GeoChaser
 
-## Setup
+[GeoChaser](https://geochaser.app) is an interactive way of exploring cities, municipalities and countries. Simply by
+selecting a photograph with
+geodata you can unlock the places of your favorite regions.
 
-Make sure to install dependencies:
+GeoChaser works by extracting the geodata from the photograph and comparing it to the coordinates of the selected
+region.
 
-```bash
-# npm
-npm install
+### 📸 Image Geodata extraction
 
-# pnpm
-pnpm install
+The geodata is extracted from the image on the client side using [exifr](https://www.npmjs.com/package/exifr) and being
+processed by [PostGIS](https://postgis.net/) on the server. No location data is ever stored!
 
-# yarn
-yarn install
+### 🗺️ Map Data
 
-# bun
-bun install
-```
+We use opensource map data from different sources. Check out our [Imprint](https://geochaser.app/imprint) to find out
+more.
 
-## Development Server
+We currently have map data for:
 
-Start the development server on `http://localhost:3000`:
+- Berlin
+- Hamburg
+- Gießen
+- Frankfurt (on the Main)
+- Munich
+- Wien
 
-```bash
-# npm
-npm run dev
+### 💻 Tech Stack
 
-# pnpm
-pnpm dev
+This project is built with:
 
-# yarn
-yarn dev
+- [Nuxt](https://nuxt.com/)
+- [Vue.js](https://vuejs.org/)
+- [PrimeVue](https://primevue.org/)
+- [Tailwind CSS for Nuxt](https://tailwindcss.nuxtjs.org/)
+- [Prisma](https://www.prisma.io/)
 
-# bun
-bun run dev
-```
+We also use the following dependencies:
 
-## Production
+- [PostGIS](https://postgis.net/) for geospatial data
+- [leafletjs](https://leafletjs.com/) for map rendering
+- [exifr](https://www.npmjs.com/package/exifr) for image geodata extraction
 
-Build the application for production:
+### 👥 Contributing
 
-```bash
-# npm
-npm run build
+We are always looking for more maps! If you have a region that you would like to see in GeoChaser, please contact
+us and provide geodata. We will add it to the map data. Thanks!
 
-# pnpm
-pnpm build
-
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+We are also always open to feedback and suggestions. This project is far from perfect, and not all features are
+finished. So if you see room for improvement, contact us and let us know!
