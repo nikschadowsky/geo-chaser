@@ -7,6 +7,8 @@
 selecting a photograph with
 geodata you can unlock the places of your favorite regions.
 
+![GeoChaser in Action](DESCRIPTION_IMAGE.png)
+
 GeoChaser works by extracting the geodata from the photograph and comparing it to the coordinates of the selected
 region.
 
@@ -27,7 +29,7 @@ We currently have map data for:
 - Gießen
 - Frankfurt (on the Main)
 - Munich
-- Wien
+- Vienna
 
 ### 💻 Tech Stack
 
@@ -44,6 +46,7 @@ We also use the following dependencies:
 - [PostGIS](https://postgis.net/) for geospatial data
 - [leafletjs](https://leafletjs.com/) for map rendering
 - [exifr](https://www.npmjs.com/package/exifr) for image geodata extraction
+- [i18n for Nuxt](https://i18n.nuxtjs.org/) for language support of English and German
 
 ### 👥 Contributing
 
