@@ -7,7 +7,7 @@
 selecting a photograph with
 geodata you can unlock the places of your favorite regions.
 
-![GeoChaser in Action](DESCRIPTION_IMAGE.png)
+![GeoChaser in Action](DESCRIPTION_IMAGE_full.png)
 
 GeoChaser works by extracting the geodata from the photograph and comparing it to the coordinates of the selected
 region.
