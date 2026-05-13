@@ -24,7 +24,7 @@ export default defineEventHandler(async (event) => {
     const secret = process.env.JWT_SECRET!
 
     const token = jwt.sign({userId: user.id, username: user.username}, secret, {
-        expiresIn: '7d'
+        expiresIn: '28d'
     })
 
     setCookie(event, 'auth_token', token, {
