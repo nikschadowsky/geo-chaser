@@ -11,8 +11,9 @@ export default defineEventHandler((event) => {
         if (token) {
             try {
                 event.context.authPayload = jwt.verify(token, secret)
-            } catch (error) {
-                event.context.user = null
+            } catch (error: any) {
+                console.error("JWT Verification failed:", error.name, error.message)
+                event.context.authPayload = null
             }
         }
     }
